@@ -8,9 +8,11 @@ class ArmorPiece:
     lighting: int
     price: int
 
-    def __init__(self, physical, magical, fire, lighting, price) -> None:
-        # self.name = name
-        # self.armor_piece = armor_piece
+    def __init__(
+            self, name: str, armor_piece: int, physical: int, magical: int, fire: int, lighting: int, price: int
+    ) -> None:
+        self.name = name
+        self.armor_piece = armor_piece
         self.physical = physical
         self.magical = magical
         self.fire = fire
@@ -18,7 +20,8 @@ class ArmorPiece:
         self.price = price
 
     def __repr__(self) -> str:
-        return f"\n\t\tPHYS {self.physical}\n\t\tMAG {self.magical}\n\t\tFIRE {self.fire}\n\t\tLIGHT {self.lighting}\n\t\tPRICE {self.price:,}"
+        return f"\n\t\tPHYS {self.physical}\n\t\tMAG {self.magical}\n\t\tFIRE {self.fire}\n\t\tLIGHT" \
+               + f"{self.lighting}\n\t\tPRICE {self.price:,}"
 
 
 class ArmorSet:
@@ -32,9 +35,11 @@ class ArmorSet:
         self.name = name
 
     def __repr__(self) -> str:
-        return f"\n{self.name} Armor Set\n\n\tHELMET{self.helmet.__repr__()}\n\n\tBODY{self.body.__repr__()}\n\n\tGAUNTLET{self.gauntlet.__repr__()}\n\n\tLEGGINGS{self.leggings.__repr__()}"
+        return f"\n{self.name} Armor Set\n\n\tHELMET{self.helmet.__repr__()}" \
+               + f"\n\n\tBODY{self.body.__repr__()}\n\n\tGAUNTLET{self.gauntlet.__repr__()}" \
+               + f"\n\n\tLEGGINGS{self.leggings.__repr__()}"
 
-    def complete_set(self, helmet, body, gauntlet, leggings) -> None:
+    def complete_set(self, helmet: ArmorPiece, body: ArmorPiece, gauntlet: ArmorPiece, leggings: ArmorPiece) -> None:
         self.helmet = helmet
         self.body = body
         self.gauntlet = gauntlet
@@ -47,5 +52,5 @@ class ArmorSet:
         print(attributes)
         print(attributes_2)
 
-        for each in attributes:
-            print(self.helmet.each)
+        # for each in attributes:
+            # print(self.helmet.each)
