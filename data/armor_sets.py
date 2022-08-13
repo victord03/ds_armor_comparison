@@ -44,6 +44,7 @@ steel_set = {
     "leggings": steel_leggings
 }
 
+######################################
 
 balder_helmet = {
     "armor_piece": "Helmet",
@@ -87,4 +88,50 @@ balder_set = {
     "body": balder_body,
     "gauntlet": balder_gauntlet,
     "leggings": balder_leggings,
+}
+
+######################################
+
+chain_helmet = {
+    "armor_piece": "Helmet",
+    "physical": 12,
+    "magical": 10,
+    "fire": 8,
+    "lightning": 3,
+    "price": 500
+}
+
+chain_body = {
+    "armor_piece": "Body",
+    "physical": 30,
+    "magical": 21,
+    "fire": 16,
+    "lightning": 7,
+    "price": 800
+}
+
+chain_gauntlet = {
+    "armor_piece": "Gauntlet",
+    "physical": 12,
+    "magical": 10,
+    "fire": 8,
+    "lightning": 4,
+    "price": 500
+}
+
+chain_leggings = {
+    "armor_piece": "Leggings",
+    "physical": 18,
+    "magical": 14,
+    "fire": 12,
+    "lightning": 5,
+    "price": 500
+}
+
+chain_set = {
+    "name": "Chain",
+    "helmet": chain_helmet,
+    "body": chain_body,
+    "gauntlet": chain_gauntlet,
+    "leggings": chain_leggings,
 }

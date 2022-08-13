@@ -41,8 +41,8 @@ class ArmorSet:
 
     def compare_armor_sets(self, armor_set) -> None:
 
-        attributes = list(self.helmet.__dict__.keys())
-        attributes_2 = [attribute for attribute in self.helmet.__dict__]
-        print(attributes)
-        print(attributes_2)
+        """attributes = list(self.helmet.__dict__.keys())
+        attributes_2 = [attribute for attribute in self.helmet.__dict__]"""
 
+        for value in self.helmet.__dict__.values():
+            print(value)
