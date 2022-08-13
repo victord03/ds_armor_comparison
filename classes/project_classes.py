@@ -1,5 +1,7 @@
 
 class ArmorPiece:
+
+    # todo: think about breaking down to two classes "Resistances", "Attributes"
     armor_piece: int
     physical: int
     magical: int
@@ -42,6 +44,7 @@ class ArmorSet:
     @staticmethod
     def compare_armor_piece(self_piece, armor_piece) -> dict:
 
+        # todo: self_piece.copy() -> self_piece_copy.pop("price"), self_piece_copy.pop("armor_piece")
         evaluation = {
             "physical": 0,
             "magical": 0,
@@ -56,34 +59,39 @@ class ArmorSet:
         return evaluation
 
     # todo: does not account specific resistance (only overall score). does not include item cost.
-    def compare_armor_set(self, armor_set):
+    def compare_armor_set(self, list_of_armor_sets):
 
-        self_helmet = self.helmet.__dict__
-        other_helmet = armor_set.helmet.__dict__
+        best_armor_set = None
 
-        eval_helmet = self.compare_armor_piece(self_helmet, other_helmet)
+        for armor_set in list_of_armor_sets:
 
-        self_body = self.body.__dict__
-        other_body = armor_set.body.__dict__
+            for armor_set in list_of_armor_sets:
+                self_helmet = self.helmet.__dict__
+                other_helmet = armor_set.helmet.__dict__
 
-        eval_body = self.compare_armor_piece(self_body, other_body)
+                eval_helmet = self.compare_armor_piece(self_helmet, other_helmet)
 
-        self_gauntlet = self.gauntlet.__dict__
-        other_gauntlet = armor_set.gauntlet.__dict__
+                self_body = self.body.__dict__
+                other_body = armor_set.body.__dict__
 
-        eval_gauntlet = self.compare_armor_piece(self_gauntlet, other_gauntlet)
+                eval_body = self.compare_armor_piece(self_body, other_body)
 
-        self_leggings = self.leggings.__dict__
-        other_leggings = armor_set.leggings.__dict__
+                self_gauntlet = self.gauntlet.__dict__
+                other_gauntlet = armor_set.gauntlet.__dict__
 
-        eval_leggings = self.compare_armor_piece(self_leggings, other_leggings)
+                eval_gauntlet = self.compare_armor_piece(self_gauntlet, other_gauntlet)
 
-        total_scores = {
-            "helmet": sum([x for x in eval_helmet.values()]),
-            "body": sum([x for x in eval_body.values()]),
-            "gauntlet": sum([x for x in eval_gauntlet.values()]),
-            "leggings": sum([x for x in eval_leggings.values()]),
-        }
+                self_leggings = self.leggings.__dict__
+                other_leggings = armor_set.leggings.__dict__
+
+                eval_leggings = self.compare_armor_piece(self_leggings, other_leggings)
+
+                total_scores = {
+                    "helmet": sum([x for x in eval_helmet.values()]),
+                    "body": sum([x for x in eval_body.values()]),
+                    "gauntlet": sum([x for x in eval_gauntlet.values()]),
+                    "leggings": sum([x for x in eval_leggings.values()]),
+                }
 
         return total_scores
 
