@@ -7,12 +7,14 @@ def main():
     balder_set = ArmorSet(dt_arm_sts.balder_set)
     steel_set = ArmorSet(dt_arm_sts.steel_set)
     chain_set = ArmorSet(dt_arm_sts.chain_set)
+    black_iron_set = ArmorSet(dt_arm_sts.black_iron_set)
 
     # print(balder_set)
     # print(steel_set)
     # print(chain_set)
 
-    # balder_set.compare_armor_sets(steel_set)
+    brute_score = steel_set.compare_armor_set(black_iron_set)
+    print(brute_score)
 
 
 if __name__ == "__main__":
