@@ -1,25 +1,4 @@
-
-class ArmorPiece:
-
-    # todo: think about breaking down to two classes "Resistances", "Attributes"
-    armor_piece: int
-    physical: int
-    magical: int
-    fire: int
-    lighting: int
-    price: int
-
-    def __init__(self, data_dict: dict) -> None:
-        # self.armor_piece = data_dict["armor_piece"]
-        self.physical = data_dict["physical"]
-        self.magical = data_dict["magical"]
-        self.fire = data_dict["fire"]
-        self.lighting = data_dict["lightning"]
-        # self.price = data_dict["price"]
-
-    def __repr__(self) -> str:
-        return f"\n\t\tPHYS {self.physical}\n\t\tMAG {self.magical}\n\t\tFIRE {self.fire}\n\t\tLIGHT" \
-               + f" {self.lighting}\n\t\tPRICE {self.price:,}"
+from classes.armor_piece import ArmorPiece
 
 
 class ArmorSet:
@@ -37,9 +16,9 @@ class ArmorSet:
         self.leggings = ArmorPiece(data_dict["leggings"])
 
     def __repr__(self) -> str:
-        return f"\n{self.name} Armor Set\n\n\tHELMET{self.helmet.__repr__()}" \
-               + f"\n\n\tBODY{self.body.__repr__()}\n\n\tGAUNTLET{self.gauntlet.__repr__()}" \
-               + f"\n\n\tLEGGINGS{self.leggings.__repr__()}"
+        return f"\n{self.name} Armor Set\n\n\tHELMET {self.helmet.__repr__()}" \
+               + f"\n\n\tBODY {self.body.__repr__()}\n\n\tGAUNTLET {self.gauntlet.__repr__()}" \
+               + f"\n\n\tLEGGINGS {self.leggings.__repr__()}"
 
     @staticmethod
     def compare_armor_piece(self_piece, armor_piece) -> dict:
@@ -59,13 +38,15 @@ class ArmorSet:
         return evaluation
 
     # todo: does not account specific resistance (only overall score). does not include item cost.
-    def compare_armor_set(self, list_of_armor_sets):
+    def compare_armor_set(self, list_of_armor_sets) -> dict:
 
         best_armor_set = None
 
+        total_scores = dict()
+
         for armor_set in list_of_armor_sets:
 
-            for armor_set in list_of_armor_sets:
+            for armor_set_inner in list_of_armor_sets:
                 self_helmet = self.helmet.__dict__
                 other_helmet = armor_set.helmet.__dict__
 

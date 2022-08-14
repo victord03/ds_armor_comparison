@@ -181,3 +181,37 @@ black_iron_set = {
     "gauntlet": black_iron_gauntlet,
     "leggings": black_iron_leggings,
 }
+
+armor_sets = {
+
+    "black_iron_set": {
+
+        "helmet": {
+            "armor_piece": "Helmet",
+            "physical": 27,
+            "magical": 11,
+            "fire": 19,
+            "lightning": 8,
+            "price": 0,
+        },
+
+        "body": {
+            "armor_piece": "Body",
+            "physical": 68,
+            "magical": 30,
+            "fire": 51,
+            "lightning": 21,
+            "price": 0,
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
