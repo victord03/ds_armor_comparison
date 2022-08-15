@@ -1,4 +1,5 @@
 from classes.armor_piece import ArmorPiece
+from utils.constants import NLNLT, NL
 
 
 class ArmorSet:
@@ -9,16 +10,21 @@ class ArmorSet:
     leggings: ArmorPiece
 
     def __init__(self, data_dict: dict) -> None:
-        self.name = data_dict["name"]
+        self.name = data_dict["pn"]
         self.helmet = ArmorPiece(data_dict["helmet"])
         self.body = ArmorPiece(data_dict["body"])
         self.gauntlet = ArmorPiece(data_dict["gauntlet"])
         self.leggings = ArmorPiece(data_dict["leggings"])
 
     def __repr__(self) -> str:
-        return f"\n{self.name} Armor Set\n\n\tHELMET {self.helmet.__repr__()}" \
-               + f"\n\n\tBODY {self.body.__repr__()}\n\n\tGAUNTLET {self.gauntlet.__repr__()}" \
-               + f"\n\n\tLEGGINGS {self.leggings.__repr__()}"
+
+        intro = f"{NL}{self.name} Armor Set"
+        helmet = f"{NLNLT}HELMET {self.helmet.__repr__()}"
+        body = f"{NLNLT}BODY {self.body.__repr__()}"
+        gauntlet = f"{NLNLT}GAUNTLET {self.gauntlet.__repr__()}"
+        leggings = f"{NLNLT}LEGGINGS {self.leggings.__repr__()}"
+
+        return f"{intro}{helmet}{body}{gauntlet}{leggings}"
 
     @staticmethod
     def compare_armor_piece(self_piece, armor_piece) -> dict:
@@ -68,10 +74,10 @@ class ArmorSet:
                 eval_leggings = self.compare_armor_piece(self_leggings, other_leggings)
 
                 total_scores = {
-                    "helmet": sum([x for x in eval_helmet.values()]),
-                    "body": sum([x for x in eval_body.values()]),
-                    "gauntlet": sum([x for x in eval_gauntlet.values()]),
-                    "leggings": sum([x for x in eval_leggings.values()]),
+                    "helmet": sum(list(eval_helmet.values())),
+                    "body": sum(list(eval_body.values())),
+                    "gauntlet": sum(list(eval_gauntlet.values())),
+                    "leggings": sum(list(eval_leggings.values())),
                 }
 
         return total_scores
