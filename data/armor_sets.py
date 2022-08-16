@@ -11,6 +11,7 @@ armor_sets = {
             "fire": 19,
             "lightning": 8,
             "price": 0,
+            "weight": 6.0,
         },
 
         "body": {
@@ -19,6 +20,7 @@ armor_sets = {
             "fire": 51,
             "lightning": 21,
             "price": 0,
+            "weight": 15.6,
         },
 
         "gauntlet": {
@@ -27,6 +29,7 @@ armor_sets = {
             "fire": 30,
             "lightning": 13,
             "price": 0,
+            "weight": 9.2,
         },
 
         "leggings": {
@@ -35,6 +38,7 @@ armor_sets = {
             "fire": 30,
             "lightning": 13,
             "price": 0,
+            "weight": 9.2,
         }
     },
 
@@ -48,6 +52,7 @@ armor_sets = {
             "fire": 8,
             "lightning": 3,
             "price": 500,
+            "weight": 3.0,
         },
 
         "body": {
@@ -56,6 +61,7 @@ armor_sets = {
             "fire": 16,
             "lightning": 7,
             "price": 800,
+            "weight": 6.0,
         },
 
         "gauntlet": {
@@ -64,6 +70,7 @@ armor_sets = {
             "fire": 8,
             "lightning": 4,
             "price": 500,
+            "weight": 3.6,
         },
 
         "leggings": {
@@ -72,6 +79,7 @@ armor_sets = {
             "fire": 12,
             "lightning": 5,
             "price": 500,
+            "weight": 4.6,
         },
 
     },
@@ -86,6 +94,7 @@ armor_sets = {
             "fire": 8,
             "lightning": 6,
             "price": 5_000,
+            "weight": 4.2,
         },
 
         "body": {
@@ -94,6 +103,7 @@ armor_sets = {
             "fire": 18,
             "lightning": 15,
             "price": 8_000,
+            "weight": 10.9,
         },
 
         "gauntlet": {
@@ -102,6 +112,7 @@ armor_sets = {
             "fire": 8,
             "lightning": 5,
             "price": 5_000,
+            "weight": 3.5,
         },
 
         "leggings": {
@@ -110,6 +121,7 @@ armor_sets = {
             "fire": 12,
             "lightning": 9,
             "price": 5_000,
+            "weight": 6.4,
         },
     },
 
@@ -123,6 +135,7 @@ armor_sets = {
             "fire": 8,
             "lightning": 5,
             "price": 5_000,
+            "weight": 5.4,
         },
 
         "body": {
@@ -131,6 +144,7 @@ armor_sets = {
             "fire": 21,
             "lightning": 13,
             "price": 8_000,
+            "weight": 14.0,
         },
 
         "gauntlet": {
@@ -139,6 +153,7 @@ armor_sets = {
             "fire": 12,
             "lightning": 8,
             "price": 5_000,
+            "weight": 8.3,
         },
 
         "leggings": {
@@ -147,14 +162,8 @@ armor_sets = {
             "fire": 12,
             "lightning": 8,
             "price": 5_000,
+            "weight": 8.3,
         },
     },
 }
-
-
-
-
-
-
-
 

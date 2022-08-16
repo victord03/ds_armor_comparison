@@ -8,6 +8,7 @@ class ArmorSet:
     body: ArmorPiece
     gauntlet: ArmorPiece
     leggings: ArmorPiece
+    weight: float
 
     def __init__(self, data_dict: dict) -> None:
         self.name = data_dict["pn"]
@@ -15,6 +16,9 @@ class ArmorSet:
         self.body = ArmorPiece(data_dict["body"])
         self.gauntlet = ArmorPiece(data_dict["gauntlet"])
         self.leggings = ArmorPiece(data_dict["leggings"])
+
+        self.weight = self.helmet.attributes.weight + self.body.attributes.weight
+        self.weight += self.gauntlet.attributes.weight + self.leggings.attributes.weight
 
     def show_self(self) -> str:
 
@@ -26,3 +30,5 @@ class ArmorSet:
 
         return f"{intro}{helmet}{body}{gauntlet}{leggings}"
 
+    def self_as_dict(self) -> dict:
+        return self.__dict__

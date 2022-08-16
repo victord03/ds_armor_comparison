@@ -1,7 +1,7 @@
 from classes.armor_set import ArmorSet
 
 
-def instantiate_all_weapons(armor_set_data: dict) -> dict:
+def instantiate_all_armors(armor_set_data: dict) -> dict:
 
     all_instances = {}
 

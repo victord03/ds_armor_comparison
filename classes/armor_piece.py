@@ -2,10 +2,12 @@ from utils.constants import NL, T
 
 
 class APAttributes:
+    weight: float
     price: int
 
-    def __init__(self, price: int) -> None:
+    def __init__(self, price: int, weight: float) -> None:
         self.price = price
+        self.weight = weight
 
 
 class APResistances:
@@ -31,7 +33,7 @@ class ArmorPiece:
             data_dict["physical"], data_dict["magical"], data_dict["fire"], data_dict["lightning"]
         )
 
-        self.attributes = APAttributes(data_dict["price"])
+        self.attributes = APAttributes(data_dict["price"], data_dict["weight"])
 
     def show_self(self) -> str:
 
@@ -41,5 +43,9 @@ class ArmorPiece:
         lightning = f"{NL}{T}{T}Lightning: {self.resistances.lightning}"
 
         price = f"{NL}{T}{T}Price: {self.attributes.price}"
+        weight = f"{NL}{T}{T}Price: {self.attributes.weight}"
 
-        return f"{physical}{magical}{fire}{lightning}{price}"
+        return f"{physical}{magical}{fire}{lightning}{price}{weight}"
+
+    def self_as_dict(self) -> dict:
+        return self.__dict__

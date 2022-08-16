@@ -1,5 +1,5 @@
 
-def compare_armor_sets(armor_set_a: dict, armor_set_b: dict) -> dict:
+def compare_armor_sets(armor_set_a, armor_set_b) -> dict:
 
     evaluation = {
 
@@ -8,61 +8,72 @@ def compare_armor_sets(armor_set_a: dict, armor_set_b: dict) -> dict:
             "magical": 0,
             "fire": 0,
             "lightning": 0,
-            "price": 0
+            "price": 0,
+            "weight": 0,
         },
         "body": {
             "physical": 0,
             "magical": 0,
             "fire": 0,
             "lightning": 0,
-            "price": 0
+            "price": 0,
+            "weight": 0,
         },
         "gauntlet": {
             "physical": 0,
             "magical": 0,
             "fire": 0,
             "lightning": 0,
-            "price": 0
+            "price": 0,
+            "weight": 0,
         },
         "leggings": {
             "physical": 0,
             "magical": 0,
             "fire": 0,
             "lightning": 0,
-            "price": 0
+            "price": 0,
+            "weight": 0,
         },
     }
 
-    for self_key, other_key in zip(armor_set_a, armor_set_b):
+    armor_set_a_as_dict = armor_set_a.__dict__
+    armor_set_b_as_dict = armor_set_b.__dict__
 
-        if self_key == "name":
+    for armor_set_a_key, armor_set_b_key in zip(armor_set_a_as_dict, armor_set_b_as_dict):
+
+        if armor_set_a_key == "name" or armor_set_a_key == "weight":
             continue
         else:
 
-            self_armor_piece_dict = armor_set_a[self_key].resistances.__dict__
-            other_armor_piece_dict = armor_set_b[other_key].resistances.__dict__
+            self_armor_piece_dict = armor_set_a_as_dict[armor_set_a_key].resistances.__dict__
+            other_armor_piece_dict = armor_set_b_as_dict[armor_set_b_key].resistances.__dict__
 
             for self_res_name in self_armor_piece_dict:
                 self_res_value = self_armor_piece_dict[self_res_name]
                 other_res_value = other_armor_piece_dict[self_res_name]
 
-                evaluation[self_key][self_res_name] = self_res_value - other_res_value
+                evaluation[armor_set_a_key][self_res_name] = self_res_value - other_res_value
 
-    for self_key, other_key in zip(armor_set_a, armor_set_b):
+    for armor_set_a_key, armor_set_b_key in zip(armor_set_a_as_dict, armor_set_b_as_dict):
 
-        if self_key == "name":
+        if armor_set_a_key == "name" or armor_set_a_key == "weight":
             continue
         else:
 
-            self_price = armor_set_a[self_key].attributes.price
-            other_price = armor_set_b[other_key].attributes.price
+            armor_a_price = armor_set_a_as_dict[armor_set_a_key].attributes.price
+            armor_b_price = armor_set_b_as_dict[armor_set_b_key].attributes.price
 
-            evaluation[self_key]['price'] = self_price - other_price
+            evaluation[armor_set_a_key]['price'] = armor_a_price - armor_b_price
+
+            armor_set_a_weight = armor_set_a_as_dict[armor_set_a_key].attributes.weight
+            armor_set_b_weight = armor_set_b_as_dict[armor_set_b_key].attributes.weight
+            evaluation[armor_set_a_key]['weight'] = round(armor_set_a_weight - armor_set_b_weight, 1)
 
     return evaluation
 
 
-def maximize_this_resistance(armor_set_a: dict, armor_set_b: dict, resistance=None) -> dict:
+def maximize_this_resistance(armor_set_a: dict, armor_set_b: dict, resistance: str) -> dict:
 
     armor_set_a_copy = armor_set_a.copy()
     armor_set_a_copy.pop("name")
@@ -96,19 +107,6 @@ def maximize_this_resistance(armor_set_a: dict, armor_set_b: dict, resistance=No
                     evaluation[key] = (armor_set_b["name"], diff)
 
     return evaluation
-
-
-def compile_comparison_analysis(evaluation_dict_from_a_and_b: dict) -> bool:
-
-    is_better = bool()
-
-    for key, value in evaluation_dict_from_a_and_b.items():
-
-        for item_name, inner_value in value.items():
-
-            ...
-
-    return is_better
 
 
 # WIP
