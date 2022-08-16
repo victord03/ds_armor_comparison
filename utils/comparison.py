@@ -73,12 +73,15 @@ def compare_armor_sets(armor_set_a, armor_set_b) -> dict:
     return evaluation
 
 
-def maximize_this_resistance(armor_set_a: dict, armor_set_b: dict, resistance: str) -> dict:
+def maximize_this_resistance(armor_set_a, armor_set_b, resistance: str) -> dict:
 
-    armor_set_a_copy = armor_set_a.copy()
+    armor_set_a_as_a_dict = armor_set_a.__dict__
+    armor_set_b_as_a_dict = armor_set_b.__dict__
+
+    armor_set_a_copy = armor_set_a_as_a_dict.copy()
     armor_set_a_copy.pop("name")
 
-    armor_set_b_copy = armor_set_b.copy()
+    armor_set_b_copy = armor_set_b_as_a_dict.copy()
     armor_set_b_copy.pop("name")
 
     evaluation = {
@@ -89,7 +92,7 @@ def maximize_this_resistance(armor_set_a: dict, armor_set_b: dict, resistance: s
     }
 
     for key in armor_set_a_copy:
-
+        # todo: fix this
         resistances_a_as_dict = armor_set_a_copy[key].resistances.__dict__
         resistances_b_as_dict = armor_set_b_copy[key].resistances.__dict__
 
@@ -101,10 +104,10 @@ def maximize_this_resistance(armor_set_a: dict, armor_set_b: dict, resistance: s
 
                 if a_is_higher:
                     diff = resistances_a_as_dict[value_armor_set_a] - resistances_b_as_dict[value_armor_set_b]
-                    evaluation[key] = (armor_set_a["name"], diff)
+                    evaluation[key] = (armor_set_a_as_a_dict["name"], diff)
                 else:
                     diff = resistances_b_as_dict[value_armor_set_b] - resistances_a_as_dict[value_armor_set_a]
-                    evaluation[key] = (armor_set_b["name"], diff)
+                    evaluation[key] = (armor_set_b_as_a_dict["name"], diff)
 
     return evaluation
 

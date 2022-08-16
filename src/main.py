@@ -15,8 +15,9 @@ def main():
     print(eval_dict)
 
     resistance = "lightning"
-    # max_res = mr(armor_set_a, armor_set_b, resistance)
-    # print(ui.display_maximize_dict(max_res, resistance))
+    # needs fixing after update
+    max_res = mr(armor_set_a, armor_set_b, resistance)
+    print(ui.display_maximize_dict(max_res, resistance))
 
 
 if __name__ == "__main__":
