@@ -1,23 +1,17 @@
-from classes.armor_set import ArmorSet
 from data.armor_sets import armor_sets
+from utils.automation import instantiate_all_weapons
+from utils.comparison import compare_armor_sets as cas
 
 
 def main():
 
-    # todo: automated the instantiation from the data file
-    balder_set = ArmorSet(armor_sets["balder_set"])
-    steel_set = ArmorSet(armor_sets["steel_set"])
-    chain_set = ArmorSet(armor_sets["chain_set"])
-    black_iron_set = ArmorSet(armor_sets["black_iron_set"])
+    all_weapons_dict = instantiate_all_weapons(armor_sets)
 
-    print(balder_set)
-    print(steel_set)
-    print(chain_set)
-    print(black_iron_set)
+    armor_set_a = all_weapons_dict["chain_set"].__dict__
+    armor_set_b = all_weapons_dict["steel_set"].__dict__
 
-    # list_of_armor_sets = [steel_set, chain_set]
-    # brute_score = steel_set.compare_armor_set(list_of_armor_sets)
-    # print(brute_score)
+    eval_dict = cas(armor_set_a, armor_set_b)
+    print(eval_dict)
 
 
 if __name__ == "__main__":
