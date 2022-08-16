@@ -62,6 +62,42 @@ def compare_armor_sets(armor_set_a: dict, armor_set_b: dict) -> dict:
     return evaluation
 
 
+def maximize_this_resistance(armor_set_a: dict, armor_set_b: dict, resistance=None) -> dict:
+
+    armor_set_a_copy = armor_set_a.copy()
+    armor_set_a_copy.pop("name")
+
+    armor_set_b_copy = armor_set_b.copy()
+    armor_set_b_copy.pop("name")
+
+    evaluation = {
+        "helmet": (str, int),
+        "body":  (str, int),
+        "gauntlet":  (str, int),
+        "leggings":  (str, int),
+    }
+
+    for key in armor_set_a_copy:
+
+        resistances_a_as_dict = armor_set_a_copy[key].resistances.__dict__
+        resistances_b_as_dict = armor_set_b_copy[key].resistances.__dict__
+
+        for value_armor_set_a, value_armor_set_b in zip(resistances_a_as_dict, resistances_b_as_dict):
+
+            if value_armor_set_a == resistance:
+
+                a_is_higher = resistances_a_as_dict[value_armor_set_a] > resistances_b_as_dict[value_armor_set_b]
+
+                if a_is_higher:
+                    diff = resistances_a_as_dict[value_armor_set_a] - resistances_b_as_dict[value_armor_set_b]
+                    evaluation[key] = (armor_set_a["name"], diff)
+                else:
+                    diff = resistances_b_as_dict[value_armor_set_b] - resistances_a_as_dict[value_armor_set_a]
+                    evaluation[key] = (armor_set_b["name"], diff)
+
+    return evaluation
+
+
 def compile_comparison_analysis(evaluation_dict_from_a_and_b: dict) -> bool:
 
     is_better = bool()

@@ -26,4 +26,3 @@ class ArmorSet:
 
         return f"{intro}{helmet}{body}{gauntlet}{leggings}"
 
-
