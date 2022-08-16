@@ -33,7 +33,7 @@ class ArmorPiece:
 
         self.attributes = APAttributes(data_dict["price"])
 
-    def __repr__(self) -> str:
+    def show_self(self) -> str:
 
         physical = f"{NL}{T}{T}Physical: {self.resistances.physical}"
         magical = f"{NL}{T}{T}Magical: {self.resistances.magical}"
