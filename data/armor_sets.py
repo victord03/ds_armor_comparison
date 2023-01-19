@@ -1,3 +1,4 @@
+"""Contains data of armor sets, emulating a local database."""
 
 armor_sets = {
 

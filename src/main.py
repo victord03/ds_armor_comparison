@@ -5,6 +5,7 @@ from utils import ui
 
 
 def main():
+    """Main Func."""
 
     all_armors_dict = instantiate_all_armors(armor_sets)
 
@@ -16,8 +17,8 @@ def main():
 
     resistance = "lightning"
     # needs fixing after update
-    max_res = mr(armor_set_a, armor_set_b, resistance)
-    print(ui.display_maximize_dict(max_res, resistance))
+    # max_res = mr(armor_set_a, armor_set_b, resistance)
+    # print(ui.display_maximize_dict(max_res, resistance))
 
 
 if __name__ == "__main__":

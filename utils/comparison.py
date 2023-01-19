@@ -1,5 +1,15 @@
 
 def compare_armor_sets(armor_set_a, armor_set_b) -> dict:
+    """Takes two armor sets and compares them.
+
+    Iteratively scans and stores each value difference to an 'evaluation' dict.
+
+    Positive values mean that 'armor_set_a' has that much higher value in the specified
+    category and negative values mean that 'armor_set_b' has that much of a higher value
+    in the specified category.
+
+    Returns the entire dict to allow multiple usages and to lean toward a single-purpose
+    function."""
 
     evaluation = {
 
@@ -74,6 +84,10 @@ def compare_armor_sets(armor_set_a, armor_set_b) -> dict:
 
 
 def maximize_this_resistance(armor_set_a, armor_set_b, resistance: str) -> dict:
+    """Has critical flaws at the moment.
+
+    Compares two armor sets and will return a configuration where for each slot, the armor
+    with the highest resistance selected is chosen. Effectively 'maximizing for this resistance'."""
 
     armor_set_a_as_a_dict = armor_set_a.__dict__
     armor_set_b_as_a_dict = armor_set_b.__dict__
@@ -91,8 +105,9 @@ def maximize_this_resistance(armor_set_a, armor_set_b, resistance: str) -> dict:
         "leggings":  (str, int),
     }
 
+    # todo: Needs fixing. Think about creating a separate function for the looping. Think about reading then storing
+    # todo: all values, then compiling a dictionary from scratch, instead of reading and compiling the dict in real time
     for key in armor_set_a_copy:
-        # todo: fix this
         resistances_a_as_dict = armor_set_a_copy[key].resistances.__dict__
         resistances_b_as_dict = armor_set_b_copy[key].resistances.__dict__
 
@@ -114,6 +129,8 @@ def maximize_this_resistance(armor_set_a, armor_set_b, resistance: str) -> dict:
 
 # WIP
 def compare_multiple_armor_sets(self, list_of_armor_sets) -> dict:
+    """Compares an arbitrary number of armor sets, given as a list of instances,
+    scores them, and returns a list of evaluation scores."""
 
     best_armor_set = None
 
